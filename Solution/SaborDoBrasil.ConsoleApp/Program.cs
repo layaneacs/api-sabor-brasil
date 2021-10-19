@@ -1,4 +1,4 @@
-﻿using SaborDoBrasil.Dominio;
+﻿using SaborDoBrasil.Dominio.Modelo;
 using System;
 
 namespace SaborDoBrasil.ConsoleApp
@@ -7,8 +7,9 @@ namespace SaborDoBrasil.ConsoleApp
     {
         static void Main(string[] args)
         {
-            new Class1();
-            Console.WriteLine("Hello World!");
+            var estoque1 = new Estoque();
+            estoque1.Id = 1;
+           Console.WriteLine("Hello World!");
         }
     }
 }
