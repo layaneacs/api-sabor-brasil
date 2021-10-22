@@ -12,6 +12,12 @@ namespace SaborDoBrasil.Dominio.Modelo
         public DateTime Validade { get ; set; }
 
 
+
+        public Ingrediente()
+        {
+
+        }
+
         public bool Valido()
         {
             return DateTime.Now < this.Validade;
