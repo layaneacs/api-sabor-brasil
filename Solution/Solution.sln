@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaborDoBrasil.ConsoleApp", "SaborDoBrasil.ConsoleApp\SaborDoBrasil.ConsoleApp.csproj", "{14F4717D-C339-4D3B-B75D-3645E1764A7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaborDoBrasil.ConsoleApp", "SaborDoBrasil.ConsoleApp\SaborDoBrasil.ConsoleApp.csproj", "{14F4717D-C339-4D3B-B75D-3645E1764A7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaborDoBrasil.Dominio", "SaborDoBrasil.Dominio\SaborDoBrasil.Dominio.csproj", "{DC15E591-41DA-4868-A1FE-B1D7AE2049B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaborDoBrasil.Dominio", "SaborDoBrasil.Dominio\SaborDoBrasil.Dominio.csproj", "{DC15E591-41DA-4868-A1FE-B1D7AE2049B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaborDoBrasil.Testes", "SaborDoBrasil.Testes\SaborDoBrasil.Testes.csproj", "{AC674BCA-5669-4CB2-939E-79997D8FE431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DC15E591-41DA-4868-A1FE-B1D7AE2049B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC15E591-41DA-4868-A1FE-B1D7AE2049B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC15E591-41DA-4868-A1FE-B1D7AE2049B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC674BCA-5669-4CB2-939E-79997D8FE431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC674BCA-5669-4CB2-939E-79997D8FE431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC674BCA-5669-4CB2-939E-79997D8FE431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC674BCA-5669-4CB2-939E-79997D8FE431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
