@@ -12,5 +12,12 @@ namespace SaborDoBrasil.Dominio.Modelo
         public double QuantidadeMinima { get; set; }
         public UnidadeMedida UnidadeMedida { get; set; }
         public DateTime Validade { get; set; }
+
+
+        public bool VericaDesperdicio()
+        {
+            var diferenca = this.QuantidadeAtual > this.QuantidadeMaxima;
+            return diferenca;
+        }
     }
 }
