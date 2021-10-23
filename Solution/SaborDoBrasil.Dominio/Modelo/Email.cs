@@ -13,7 +13,9 @@ namespace SaborDoBrasil.Dominio.Modelo
         public bool DestinatarioValido()
         {
             // Um email tem o seguinte formato: Nome@Dominio.algo
-            // "Criando algumas regras para um email"
+            // Email não deve começar com nenhum símbolo.
+            // Deve terminar com letra (ex: .coM).
+            // Deve conter tanto '@' quanto '.'
 
             var primeiroDigito = this.Destinatario[0];
             var ultimoDigito = this.Destinatario[Destinatario.Length - 1];
