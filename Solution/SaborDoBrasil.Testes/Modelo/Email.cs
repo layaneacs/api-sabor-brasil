@@ -110,7 +110,7 @@ namespace SaborDoBrasil.Testes.Modelo
             var resultado = email.CorpoValido();
 
             // Assert
-            Assert.False(resultado); // O resultado esperado é que o corpo do email esteja em branco (true).
+            Assert.False(resultado); // O resultado esperado é que o corpo do email esteja em branco (false).
 
             // Também funciona com Corpo sendo null.
         }
