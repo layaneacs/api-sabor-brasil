@@ -4,7 +4,7 @@ using Xunit;
 
 namespace SaborDoBrasil.Testes
 {
-    public class Ingrediente
+    public class IngredienteEntidade
     {
         [Fact]
         public void Verifca_se_ingrediente_esta_valido()
@@ -15,9 +15,11 @@ namespace SaborDoBrasil.Testes
             // assert - resultado esperado
 
             // Arrange
-            var ingrediente = new Dominio.Modelo.Ingrediente();
-            ingrediente.Nome = "Farinha";
-            ingrediente.Validade = DateTime.Today.AddDays(2);
+            var ingrediente = new Ingrediente
+            {
+                Nome = "Farinha",
+                Validade = DateTime.Today.AddDays(2)
+            };
 
             // Act
             var result = ingrediente.Valido();
@@ -32,9 +34,11 @@ namespace SaborDoBrasil.Testes
         {
 
             // Arrange
-            var ingrediente = new Dominio.Modelo.Ingrediente();
-            ingrediente.Nome = "Farinha";
-            ingrediente.Validade = DateTime.Today.AddDays(-2);
+            var ingrediente = new Ingrediente
+            {
+                Nome = "Farinha",
+                Validade = DateTime.Today.AddDays(-2)
+            };
 
             // Act
             var result = ingrediente.Valido();

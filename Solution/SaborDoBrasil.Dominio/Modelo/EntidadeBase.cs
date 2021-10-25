@@ -6,6 +6,6 @@ namespace SaborDoBrasil.Dominio.Modelo
 {
     public class EntidadeBase
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
     }
 }

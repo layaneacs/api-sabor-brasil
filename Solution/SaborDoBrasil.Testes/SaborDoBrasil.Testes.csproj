@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SaborDoBrasil.Dominio\SaborDoBrasil.Dominio.csproj" />
+    <ProjectReference Include="..\SaborDoBrasil.Repository\SaborDoBrasil.Repositorio.csproj" />
   </ItemGroup>
 
 </Project>
