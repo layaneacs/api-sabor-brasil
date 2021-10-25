@@ -14,10 +14,18 @@ namespace SaborDoBrasil.Dominio.Modelo
         public DateTime Validade { get; set; }
 
 
-        public bool VericaDesperdicio()
+        public Estoque()
         {
-            var diferenca = this.QuantidadeAtual > this.QuantidadeMaxima;
-            return diferenca;
+
         }
+
+        public bool VerificaQuantidade()
+        {
+
+            return false;
+        }
+
+
+        
     }
 }
