@@ -4,13 +4,11 @@ using System.Text;
 
 namespace SaborDoBrasil.Dominio.Modelo
 {
-    public class Ingrediente: EntidadeBase
+    public class Ingrediente : EntidadeBase
     {
         public string Nome { get; set; }
-        public string Fornecedor { get; set; }
-        public string Fabricante { get; set; }
+        public Fabricante Fabricante { get; set; }
         public DateTime Validade { get ; set; }
-
 
 
         public Ingrediente()
@@ -18,7 +16,7 @@ namespace SaborDoBrasil.Dominio.Modelo
 
         }
 
-        public bool Valido()
+        public bool EstaValido()
         {
             return DateTime.Now < this.Validade;
         }

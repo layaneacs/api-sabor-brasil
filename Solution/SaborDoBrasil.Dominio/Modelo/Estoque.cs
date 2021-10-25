@@ -11,7 +11,6 @@ namespace SaborDoBrasil.Dominio.Modelo
         public double QuantidadeMaxima { get; set; }
         public double QuantidadeMinima { get; set; }
         public UnidadeMedida UnidadeMedida { get; set; }
-        public DateTime Validade { get; set; }
 
 
         public Estoque()
@@ -21,7 +20,6 @@ namespace SaborDoBrasil.Dominio.Modelo
 
         public bool VerificaQuantidade()
         {
-
             return false;
         }
 
