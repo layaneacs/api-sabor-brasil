@@ -1,28 +1,47 @@
 ﻿using SaborDoBrasil.Dominio.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SaborDoBrasil.Repositorio
 {
     public class IngredienteRepositorio
     {
-        private static List<Ingrediente> data;
+        private static List<Ingrediente> db;
 
         public IngredienteRepositorio()
         {
-            data = new List<Ingrediente>();
+            db = new List<Ingrediente>();
         }
+
 
         public void Cadastrar(Ingrediente ingrediente)
         {
-            ingrediente.Id = Guid.NewGuid().ToString();
-            data.Add(ingrediente);
+            db.Add(ingrediente);
         }
 
-        public int QuantidadeIngredientes()
+        public List<Ingrediente> BuscarTodos()
         {
-            return data.Count;
+            return db;
         }
+
+        public Ingrediente BuscarPorId(string id)
+        {
+            return db.FirstOrDefault(x => x.Id == id);
+        }
+
+        public bool Delete(string id)
+        {
+            var result = db.FirstOrDefault(x => x.Id == id);
+            if(result is null)
+            {
+                return false;
+            }
+
+            db.Remove(result);
+            return true;
+        }
+
     }
 }

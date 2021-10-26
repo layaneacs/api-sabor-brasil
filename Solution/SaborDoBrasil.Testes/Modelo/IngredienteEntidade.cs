@@ -22,7 +22,7 @@ namespace SaborDoBrasil.Testes
             };
 
             // Act
-            var result = ingrediente.Valido();
+            var result = ingrediente.EstaValido();
 
             // Assert 
             Assert.True(result);
@@ -30,7 +30,7 @@ namespace SaborDoBrasil.Testes
         }
 
         [Fact]
-        public void Verifca_se_ingrediente_esta_vencido()
+        public void Verifca_se_ingrediente_nao_esta_valido()
         {
 
             // Arrange
@@ -41,7 +41,7 @@ namespace SaborDoBrasil.Testes
             };
 
             // Act
-            var result = ingrediente.Valido();
+            var result = ingrediente.EstaValido();
 
             // Assert 
             Assert.False(result);
