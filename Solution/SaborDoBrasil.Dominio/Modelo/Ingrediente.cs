@@ -9,12 +9,7 @@ namespace SaborDoBrasil.Dominio.Modelo
         public string Nome { get; set; }
         public Fabricante Fabricante { get; set; }
         public DateTime Validade { get ; set; }
-
-
-        public Ingrediente()
-        {
-
-        }
+        public UnidadeMedida UnidadeMedida { get; set; }
 
         public bool EstaValido()
         {

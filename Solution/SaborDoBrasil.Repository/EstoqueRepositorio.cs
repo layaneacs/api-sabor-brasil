@@ -6,30 +6,27 @@ using System.Text;
 
 namespace SaborDoBrasil.Repositorio
 {
-    public class IngredienteRepositorio
+    public class EstoqueRepositorio
     {
-        private static List<Ingrediente> db;
+        private static List<Estoque> db;
 
-        public IngredienteRepositorio()
+        public EstoqueRepositorio()
         {
-            db = new List<Ingrediente>();
+            db = new List<Estoque>();
         }
 
 
-        public void Cadastrar(Ingrediente ingrediente, Perfil perfil)
+        public void Cadastrar(Estoque estoque)
         {
-            if(perfil == Perfil.ESTOQUISTA || perfil == Perfil.COZINHEIRO)
-            {
-                db.Add(ingrediente);
-            }            
+            db.Add(estoque);
         }
 
-        public List<Ingrediente> BuscarTodos()
+        public List<Estoque> BuscarTodos()
         {
             return db;
         }
 
-        public Ingrediente BuscarPorId(string id)
+        public Estoque BuscarPorId(string id)
         {
             return db.FirstOrDefault(x => x.Id == id);
         }
@@ -37,7 +34,7 @@ namespace SaborDoBrasil.Repositorio
         public bool Delete(string id)
         {
             var result = db.FirstOrDefault(x => x.Id == id);
-            if(result is null)
+            if (result is null)
             {
                 return false;
             }
@@ -45,6 +42,5 @@ namespace SaborDoBrasil.Repositorio
             db.Remove(result);
             return true;
         }
-
     }
 }

@@ -10,20 +10,17 @@ namespace SaborDoBrasil.Dominio.Modelo
         public double QuantidadeAtual { get; set; }
         public double QuantidadeMaxima { get; set; }
         public double QuantidadeMinima { get; set; }
-        public UnidadeMedida UnidadeMedida { get; set; }
 
-
-        public Estoque()
+        public bool VerificaDesperdicio()
         {
-
+            return QuantidadeAtual > QuantidadeMaxima;
         }
-
-        public bool VerificaQuantidade()
+        public bool VerificaQuantidadeMinimaAtingida()
         {
-            return false;
+            return QuantidadeAtual <= QuantidadeMinima;
         }
 
 
-        
+
     }
 }
