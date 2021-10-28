@@ -1,4 +1,6 @@
 ﻿using SaborDoBrasil.Dominio.Modelo;
+
+
 using System;
 
 namespace SaborDoBrasil.ConsoleApp
@@ -7,6 +9,7 @@ namespace SaborDoBrasil.ConsoleApp
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

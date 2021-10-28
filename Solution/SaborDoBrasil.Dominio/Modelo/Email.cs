@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SaborDoBrasil.Dominio.Modelo
 {
@@ -26,25 +24,16 @@ namespace SaborDoBrasil.Dominio.Modelo
                 return false;
             else
                 return true;
-
         }
 
         public bool AssuntoValido()
         {
-            return !String.IsNullOrEmpty(this.Assunto); // Se for null ou em branco, retornará "false".
+            return !String.IsNullOrEmpty(this.Assunto);
         }
 
         public bool CorpoValido()
         {
-            return !String.IsNullOrEmpty(this.Corpo); // Se for null ou em branco, retornará "false".
+            return !String.IsNullOrEmpty(this.Corpo);
         }
-
-        // Eu deveria criar um método só para a verificação do "assunto" e do "corpo"?
-        // Se sim, eu conseguiria verificar qual dos dois é nulo ou em branco?
-
-        /*public bool AssuntoOuCorpoValidos()
-        {
-            return !String.IsNullOrEmpty(Assunto) && !String.IsNullOrEmpty(Corpo);
-        }*/
     }
 }
