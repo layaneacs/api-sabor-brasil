@@ -8,11 +8,10 @@ namespace SaborDoBrasil.Repositorio
 {
     public class EstoqueRepositorio
     {
-        private static List<Estoque> db;
+        private static readonly List<Estoque> db = new List<Estoque>();
 
         public EstoqueRepositorio()
         {
-            db = new List<Estoque>();
         }
 
 
@@ -41,6 +40,18 @@ namespace SaborDoBrasil.Repositorio
 
             db.Remove(result);
             return true;
+        }
+
+        public Estoque Update(string id, int quantidadeAdicionada)
+        {
+            var result = db.FirstOrDefault(x => x.Id == id);
+            if (result is null)
+            {
+                return null;
+            }
+
+            result.QuantidadeAtual += quantidadeAdicionada;
+            return result;
         }
     }
 }

@@ -8,11 +8,10 @@ namespace SaborDoBrasil.Repositorio
 {
     public class IngredienteRepositorio
     {
-        private static List<Ingrediente> db;
+        private static readonly List<Ingrediente> db = new List<Ingrediente>();
 
         public IngredienteRepositorio()
         {
-            db = new List<Ingrediente>();
         }
 
 
