@@ -4,13 +4,20 @@ using System.Text;
 
 namespace SaborDoBrasil.Dominio.Modelo
 {
-    public class Usuarios: EntidadeBase
+    public class Usuario: EntidadeBase
     {
         public string NomeFuncionario { get; set; }
         public int CPF { get; set; }
         public Perfil Perfil { get; set; }
 
+        public Usuario()
+        { 
+
+        }
+
      }
+
+
 
 }
 
