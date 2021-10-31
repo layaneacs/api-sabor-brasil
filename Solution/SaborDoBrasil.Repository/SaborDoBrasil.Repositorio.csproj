@@ -8,4 +8,8 @@
     <ProjectReference Include="..\SaborDoBrasil.Dominio\SaborDoBrasil.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 </Project>

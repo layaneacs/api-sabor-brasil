@@ -1,19 +1,16 @@
 ﻿using SaborDoBrasil.Dominio.Modelo;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace SaborDoBrasil.Testes.Modelo
 {
-    public class Email
+    public class EmailEntidade
     {
         [Fact]
 
         public void Verifica_Se_O_Endereco_De_Email_Esta_Correto()
         {
             // Arrange
-            var email = new SaborDoBrasil.Dominio.Modelo.Email();
+            var email = new Email();
 
             email.Destinatario = "devbrofficial@gmail.com";
             email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
@@ -30,7 +27,7 @@ namespace SaborDoBrasil.Testes.Modelo
         public void Verifica_Se_Endereco_De_Email_Esta_Incorreto()
         {
             // Arrange
-            var email = new SaborDoBrasil.Dominio.Modelo.Email();
+            var email = new Email();
 
             email.Destinatario = "devbrofficialgmail.com";
             email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
@@ -47,7 +44,7 @@ namespace SaborDoBrasil.Testes.Modelo
         public void Verifica_Se_Assunto_Esta_Preenchido()
         {
             // Arrange
-            var email = new SaborDoBrasil.Dominio.Modelo.Email();
+            var email = new Email();
 
             email.Destinatario = "devbrofficial@gmail.com";
             email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
@@ -64,7 +61,7 @@ namespace SaborDoBrasil.Testes.Modelo
         public void Verifica_Se_Assunto_Esta_Em_Branco()
         {
             // Arrange
-            var email = new SaborDoBrasil.Dominio.Modelo.Email();
+            var email = new Email();
 
             email.Destinatario = "devbrofficial@gmail.com";
             email.Assunto = null;
@@ -83,7 +80,7 @@ namespace SaborDoBrasil.Testes.Modelo
         public void Verifica_Se_Corpo_Esta_Preenchido()
         {
             // Arrange
-            var email = new SaborDoBrasil.Dominio.Modelo.Email();
+            var email = new Email();
 
             email.Destinatario = "devbrofficial@gmail.com";
             email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
@@ -100,7 +97,7 @@ namespace SaborDoBrasil.Testes.Modelo
         public void Verifica_Se_Corpo_Esta_Em_Branco()
         {
             // Arrange
-            var email = new SaborDoBrasil.Dominio.Modelo.Email();
+            var email = new Email();
 
             email.Destinatario = "devbrofficial@gmail.com";
             email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
