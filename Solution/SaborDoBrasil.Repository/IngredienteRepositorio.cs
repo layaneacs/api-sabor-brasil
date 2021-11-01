@@ -16,9 +16,15 @@ namespace SaborDoBrasil.Repositorio
         }
 
 
-        public void Cadastrar(Ingrediente ingrediente)
+        public Ingrediente Cadastrar(Ingrediente ingrediente, Perfil perfil)
         {
-            db.Add(ingrediente);
+            if (Perfil.ESTOQUISTA == perfil || Perfil.COZINHEIRO == perfil) //--validação aqui mesmo? Ou na entidade
+            {
+                db.Add(ingrediente);
+                return ingrediente;
+            }
+
+            return null;            
         }
 
         public List<Ingrediente> BuscarTodos()

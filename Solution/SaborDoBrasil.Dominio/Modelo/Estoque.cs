@@ -24,6 +24,13 @@
             return QuantidadeAtual <= QuantidadeMinima;
         }
 
+        public Estoque InserirQuantidade(int quantidade)
+        {
+            this.QuantidadeAtual += quantidade;
+
+            return this;
+        }
+
 
     }
 }

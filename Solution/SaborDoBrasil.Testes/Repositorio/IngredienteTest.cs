@@ -29,8 +29,8 @@ namespace SaborDoBrasil.Testes.Repositorio
 
             
             // Act
-            repositorio.Cadastrar(ingrediente1);
-            repositorio.Cadastrar(ingrediente2);
+            repositorio.Cadastrar(ingrediente1, Perfil.ESTOQUISTA);
+            repositorio.Cadastrar(ingrediente2, Perfil.ESTOQUISTA);
 
             // Assert 
             Assert.Equal(2, repositorio.BuscarTodos().Count);
@@ -55,8 +55,8 @@ namespace SaborDoBrasil.Testes.Repositorio
                 Validade = DateTime.Today.AddDays(2)
             };
 
-            repositorio.Cadastrar(ingrediente2);
-            repositorio.Cadastrar(ingrediente1);
+            repositorio.Cadastrar(ingrediente2, Perfil.ESTOQUISTA);
+            repositorio.Cadastrar(ingrediente1, Perfil.ESTOQUISTA);
 
             var result = repositorio.BuscarPorId(id);
 
@@ -81,12 +81,38 @@ namespace SaborDoBrasil.Testes.Repositorio
             };
 
             // Act
-            repositorio.Cadastrar(ingrediente);
+            var result = repositorio.Cadastrar(ingrediente, Perfil.ESTOQUISTA);
             repositorio.Delete(id);
 
             // Assert 
             Assert.Empty(repositorio.BuscarTodos());
+            Assert.NotNull(result);
 
         }
+        [Fact]
+        public void Verifica_se_nao_cadastra_caso_seja_diferente_de_cozinheiro_ou_estoquista()
+        {
+
+            // Arrange
+            var repositorio = new IngredienteRepositorio();
+
+            var id = Guid.NewGuid().ToString();
+            var ingrediente = new Ingrediente
+            {
+
+                Id = id,
+                Nome = "Farinha",
+                Validade = DateTime.Today.AddDays(2)
+            };
+
+            // Act
+            var result = repositorio.Cadastrar(ingrediente, Perfil.GARCOM);            
+
+            // Assert 
+            Assert.Null(result);
+
+        }
+
+
     }
 }
