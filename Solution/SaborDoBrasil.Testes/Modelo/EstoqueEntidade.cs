@@ -1,7 +1,5 @@
 ﻿using SaborDoBrasil.Dominio.Modelo;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace SaborDoBrasil.Testes.Modelo
@@ -29,7 +27,7 @@ namespace SaborDoBrasil.Testes.Modelo
 
             // Act
             var result = estoque.ExisteDespedicio();
-            
+
 
             // Assert 
             Assert.True(result);
