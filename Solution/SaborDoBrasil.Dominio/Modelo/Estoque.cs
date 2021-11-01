@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SaborDoBrasil.Dominio.Modelo
+﻿namespace SaborDoBrasil.Dominio.Modelo
 {
     public class Estoque: EntidadeBase
     {
@@ -11,7 +7,6 @@ namespace SaborDoBrasil.Dominio.Modelo
         public double QuantidadeMaxima { get; set; }
         public double QuantidadeMinima { get; set; }
         public UnidadeMedida UnidadeMedida { get; set; }
-        public DateTime Validade { get; set; }
 
 
         public Estoque()
@@ -19,13 +14,16 @@ namespace SaborDoBrasil.Dominio.Modelo
 
         }
 
-        public bool VerificaQuantidade()
+        public bool ExisteDespedicio()
         {
+            return QuantidadeAtual > QuantidadeMaxima;
+        }
 
-            return false;
+        public bool AtingiuQuantidadeMinima()
+        {
+            return QuantidadeAtual <= QuantidadeMinima;
         }
 
 
-        
     }
 }
