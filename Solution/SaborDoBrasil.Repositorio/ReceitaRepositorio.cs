@@ -6,32 +6,28 @@ using System.Text;
 
 namespace SaborDoBrasil.Repositorio
 {
-    public class EstoqueRepositorio
+    public class ReceitaRepositorio : IBaseRepositorio<Receita>
     {
-        private static List<Estoque> db;
+        private static List<Receita> db;
 
-        public EstoqueRepositorio()
+        public ReceitaRepositorio()
         {
-            db = new List<Estoque>();
+            db = new List<Receita>();
         }
 
 
-        public Estoque Cadastrar(Estoque estoque, Perfil perfil)
+        public Receita Cadastrar(Receita receita)
         {
-            if (Perfil.ESTOQUISTA == perfil) //--validação aqui mesmo? Ou na entidade
-            {
-                db.Add(estoque);
-                return estoque;
-            }
-            return null;
+            db.Add(receita);
+            return receita;
         }
 
-        public List<Estoque> BuscarTodos()
+        public List<Receita> BuscarTodos()
         {
             return db;
         }
 
-        public Estoque BuscarPorId(string id)
+        public Receita BuscarPorId(string id)
         {
             return db.FirstOrDefault(x => x.Id == id);
         }
@@ -48,15 +44,14 @@ namespace SaborDoBrasil.Repositorio
             return true;
         }
 
-        public Estoque Update(string id, Estoque estoque) 
+        public Receita Update(string id, Receita receita) 
         {
             var result = db.FirstOrDefault(x => x.Id == id);
             if (result is null)
             {
                 return null;
             }
-
-            result = estoque;
+            result = receita;
             return result;
         }
     }
