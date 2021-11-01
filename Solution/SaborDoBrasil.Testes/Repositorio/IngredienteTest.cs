@@ -27,6 +27,7 @@ namespace SaborDoBrasil.Testes.Repositorio
                 Validade = DateTime.Today.AddDays(2)
             };
 
+            
             // Act
             repositorio.Cadastrar(ingrediente1);
             repositorio.Cadastrar(ingrediente2);

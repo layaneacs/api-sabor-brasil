@@ -18,12 +18,16 @@ namespace SaborDoBrasil.Dominio.Modelo
 
         }
 
-        public bool VerificaQuantidade()
+        public bool ExisteDespedicio()
         {
-            return false;
+            return QuantidadeAtual > QuantidadeMaxima;
+        }
+
+        public bool AtingiuQuantidadeMinima()
+        {
+            return QuantidadeAtual <= QuantidadeMinima;
         }
 
 
-        
     }
 }
