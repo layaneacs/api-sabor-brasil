@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using DotNetEssentials.Crypto;
+using SaborDoBrasil.Dominio.Crypto;
 
 namespace SaborDoBrasil.Dominio.Modelo
 {

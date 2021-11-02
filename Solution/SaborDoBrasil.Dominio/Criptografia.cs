@@ -4,7 +4,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Linq;
 
-namespace DotNetEssentials.Crypto
+namespace SaborDoBrasil.Dominio.Crypto
 {
     // https://stackoverflow.com/a/10177020/2061103
     public static class StringCipher
