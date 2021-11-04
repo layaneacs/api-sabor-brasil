@@ -6,5 +6,11 @@
         public int QuantidadeUtilizada { get; set; }
         public UnidadeMedida UnidadeMedida { get; set; }
         public Prato Prato { get; set; }
+
+
+        public Receita()
+        {
+
+        }
     }
 }

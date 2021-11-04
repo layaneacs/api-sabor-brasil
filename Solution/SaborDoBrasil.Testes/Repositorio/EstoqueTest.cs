@@ -30,11 +30,40 @@ namespace SaborDoBrasil.Testes.Repositorio
 
 
             // Act
-            repositorio.Cadastrar(estoque);
-            repositorio.Update("2", 2);
+            repositorio.Cadastrar(estoque, Perfil.ESTOQUISTA);
+            var getEstoque = repositorio.BuscarPorId("2");
+            getEstoque.InserirQuantidade(4);
+            repositorio.Update("2", getEstoque);
 
             // Assert 
-            Assert.Equal(3, repositorio.BuscarPorId("2").QuantidadeAtual);
+            Assert.Equal(5, getEstoque.QuantidadeAtual);
+            Assert.Equal(10, getEstoque.QuantidadeMaxima);
+        }
+
+        [Fact]
+        public void Verifica_se_nao_cadastra_caso_seja_diferente_de_estoquista()
+        {
+
+            // Arrange
+            var repositorio = new EstoqueRepositorio();
+            var ingrediente1 = new Ingrediente
+            {
+                Id = Guid.NewGuid().ToString(),
+                Nome = "Farinha",
+                Validade = DateTime.Today.AddDays(2)
+            };
+            var estoque = new Estoque();
+            estoque.Id = "2";
+            estoque.QuantidadeAtual = 1;
+            estoque.QuantidadeMaxima = 10;
+            estoque.QuantidadeMinima = 2;
+            estoque.Ingrediente = ingrediente1;
+
+            // Act
+            var result = repositorio.Cadastrar(estoque, Perfil.COZINHEIRO);
+
+            // Assert 
+            Assert.Null(result);
 
         }
     }

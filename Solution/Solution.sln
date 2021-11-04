@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaborDoBrasil.Dominio", "Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaborDoBrasil.Testes", "SaborDoBrasil.Testes\SaborDoBrasil.Testes.csproj", "{AC674BCA-5669-4CB2-939E-79997D8FE431}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaborDoBrasil.Repositorio", "SaborDoBrasil.Repository\SaborDoBrasil.Repositorio.csproj", "{C930002F-4EF2-4BF9-B3E2-10A9D02C1CC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaborDoBrasil.Repositorio", "SaborDoBrasil.Repositorio\SaborDoBrasil.Repositorio.csproj", "{C930002F-4EF2-4BF9-B3E2-10A9D02C1CC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,9 +16,14 @@ namespace SaborDoBrasil.Repositorio
         }
 
 
-        public void Cadastrar(Estoque estoque)
+        public Estoque Cadastrar(Estoque estoque, Perfil perfil)
         {
-            db.Add(estoque);
+            if (Perfil.ESTOQUISTA == perfil) //--validação aqui mesmo? Ou na entidade
+            {
+                db.Add(estoque);
+                return estoque;
+            }
+            return null;
         }
 
         public List<Estoque> BuscarTodos()
@@ -43,7 +48,7 @@ namespace SaborDoBrasil.Repositorio
             return true;
         }
 
-        public Estoque Update(string id, int quantidadeAdicionada) //--InserirQuantidade
+        public Estoque Update(string id, Estoque estoque) 
         {
             var result = db.FirstOrDefault(x => x.Id == id);
             if (result is null)
@@ -51,8 +56,13 @@ namespace SaborDoBrasil.Repositorio
                 return null;
             }
 
-            result.QuantidadeAtual += quantidadeAdicionada;
+            result = estoque;
             return result;
+        }
+
+        public Estoque Cadastrar(Estoque input)
+        {
+            throw new NotImplementedException();
         }
     }
 }
