@@ -23,11 +23,21 @@
             return QuantidadeAtual <= QuantidadeMinima;
         }
 
-        public Estoque InserirQuantidade(int quantidade)
+        public Estoque AlterarQuantidade(int quantidade)
         {
-            this.QuantidadeAtual += quantidade;
+            if (QuantidadeAtual == 0 && quantidade < 0 || (QuantidadeAtual + quantidade < 0))
+            {
+                return this;
+            }
 
-            if(ExisteDespedicio())
+            QuantidadeAtual += quantidade;
+
+            if (AtingiuQuantidadeMinima())
+            {
+                Email email = new Email();
+                email.EnviarEmailAutomaticamente(this);
+            }
+            else if (ExisteDespedicio())
             {
                 Log log = new Log();
                 
