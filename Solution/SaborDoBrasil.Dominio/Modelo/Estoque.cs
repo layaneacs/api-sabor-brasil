@@ -8,7 +8,6 @@
         public double QuantidadeMinima { get; set; }
         public UnidadeMedida UnidadeMedida { get; set; }
 
-
         public Estoque()
         {
 
@@ -27,6 +26,13 @@
         public Estoque InserirQuantidade(int quantidade)
         {
             this.QuantidadeAtual += quantidade;
+
+            if(ExisteDespedicio())
+            {
+                Log log = new Log();
+                
+                log.GerarLog(this);
+            }
 
             return this;
         }
