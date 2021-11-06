@@ -13,6 +13,7 @@ namespace SaborDoBrasil.Dominio.Modelo
 
         }
 
+        
         public void EnviarEmailAutomaticamente(Estoque e)
         {
             Destinatario = "devbrofficial@gmail.com";

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SaborDoBrasil.Repositorio;
+using System;
 
 namespace SaborDoBrasil.Dominio.Modelo
 {
     public class Log
     {
+        private readonly LogRepositorio logRepositorio = new LogRepositorio();
         public string Id { get; set; }
         public DateTime Data { get; set; }
 
@@ -25,8 +27,8 @@ namespace SaborDoBrasil.Dominio.Modelo
             QuantidadeMaxima = estoque.QuantidadeMaxima;
 
             Desperdicio = QuantidadeAtual - QuantidadeMaxima;
-            
-            // Método de cadastro na db
+
+            logRepositorio.Cadastrar(this);
 
             return this;
         }
