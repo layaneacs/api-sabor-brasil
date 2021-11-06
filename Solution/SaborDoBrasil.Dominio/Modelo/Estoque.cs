@@ -25,11 +25,6 @@
 
         public Estoque AlterarQuantidade(int quantidade)
         {
-            if (QuantidadeAtual == 0 && quantidade < 0 || (QuantidadeAtual + quantidade < 0))
-            {
-                return this;
-            }
-
             QuantidadeAtual += quantidade;
 
             if (AtingiuQuantidadeMinima())

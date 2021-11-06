@@ -1,7 +1,7 @@
 ﻿using System;
-using SaborDoBrasil.Dominio.Modelo;
 using System.Collections.Generic;
 using System.Linq;
+using SaborDoBrasil.Dominio.Modelo;
 
 namespace SaborDoBrasil.Repositorio
 {
@@ -14,7 +14,6 @@ namespace SaborDoBrasil.Repositorio
             db = new List<Log>();
         }
 
-        // Encapsulado na hora da geração do log
         public Log Cadastrar(Log log)
         {
             db.Add(log);
@@ -27,8 +26,7 @@ namespace SaborDoBrasil.Repositorio
             return db;
         }
 
-        // Encapsulado na hora de ler um log
-        private Log BuscarPorId(string id)
+        public Log BuscarPorId(string id)
         {
             return db.FirstOrDefault<Log>(x => x.Id == id);
         }

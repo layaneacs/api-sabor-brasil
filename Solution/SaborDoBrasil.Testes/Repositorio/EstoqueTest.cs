@@ -12,7 +12,6 @@ namespace SaborDoBrasil.Testes.Repositorio
         [Fact]
         public void Verifica_se_esta_fazendo_update_do_estoque()
         {
-
             // Arrange
             var repositorio = new EstoqueRepositorio();
             var ingrediente1 = new Ingrediente
@@ -32,7 +31,7 @@ namespace SaborDoBrasil.Testes.Repositorio
             // Act
             repositorio.Cadastrar(estoque, Perfil.ESTOQUISTA);
             var getEstoque = repositorio.BuscarPorId("2");
-            getEstoque.InserirQuantidade(4);
+            getEstoque.AlterarQuantidade(4);
             repositorio.Update("2", getEstoque);
 
             // Assert 
@@ -64,7 +63,6 @@ namespace SaborDoBrasil.Testes.Repositorio
 
             // Assert 
             Assert.Null(result);
-
         }
     }
 }

@@ -13,7 +13,6 @@ namespace SaborDoBrasil.Dominio.Modelo
 
         }
 
-        
         public void EnviarEmailAutomaticamente(Estoque e)
         {
             Destinatario = "devbrofficial@gmail.com";
@@ -56,5 +55,17 @@ namespace SaborDoBrasil.Dominio.Modelo
         {
             return !String.IsNullOrEmpty(this.Assunto) && !String.IsNullOrEmpty(this.Corpo);
         }
+
+        /*
+        public bool AssuntoValido()
+        {
+            return !String.IsNullOrEmpty(this.Assunto);
+        }
+
+        public bool CorpoValido()
+        {
+            return !String.IsNullOrEmpty(this.Corpo);
+        }
+        */
     }
 }
