@@ -30,7 +30,7 @@ namespace SaborDoBrasil.Testes.Modelo
             var email = new Email();
 
             email.Destinatario = "devbrofficialgmail.com";
-            email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
+            email.Assunto = "Quantidade de ingredientes abaixo do esperado.";
             email.Corpo = "A quantidade atual do ingrediente (Estoque.Ingrediente.Nome) está abaixo do minímo, que é de (Estoque.QuantidadeMinima).";
 
             // Act
@@ -41,75 +41,37 @@ namespace SaborDoBrasil.Testes.Modelo
         }
 
         [Fact]
-        public void Verifica_Se_Assunto_Esta_Preenchido()
+        public void Verifica_Se_Corpo_Ou_Assunto_Validos()
         {
             // Arrange
             var email = new Email();
 
             email.Destinatario = "devbrofficial@gmail.com";
-            email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
+            email.Assunto = "Quantidade de ingredientes abaixo do esperado.";
             email.Corpo = "A quantidade atual do ingrediente (Estoque.Ingrediente.Nome) está abaixo do minímo, que é de (Estoque.QuantidadeMinima).";
 
-            // Act
-            var resultado = email.AssuntoValido();
+            //Act
+            var resultado = email.AssuntoOuCorpoValidos();
 
             // Assert
-            Assert.True(resultado); // O resultado esperado é que o assunto esteja preenchido (true).
+            Assert.True(resultado); // O resultado é que o corpo e o assunto sejam válidos (true).
         }
 
         [Fact]
-        public void Verifica_Se_Assunto_Esta_Em_Branco()
+        public void Verifica_Se_Corpo_Ou_Assunto_Invalidos()
         {
             // Arrange
             var email = new Email();
 
             email.Destinatario = "devbrofficial@gmail.com";
-            email.Assunto = null;
+            email.Assunto = "";
             email.Corpo = "A quantidade atual do ingrediente (Estoque.Ingrediente.Nome) está abaixo do minímo, que é de (Estoque.QuantidadeMinima).";
 
-            // Act
-            var resultado = email.AssuntoValido();
+            //Act
+            var resultado = email.AssuntoOuCorpoValidos();
 
             // Assert
-            Assert.False(resultado); // O resultado esperado é que o assunto esteja em branco (true).
-
-            // Também funciona com Assunto sendo null.
-        }
-
-        [Fact]
-        public void Verifica_Se_Corpo_Esta_Preenchido()
-        {
-            // Arrange
-            var email = new Email();
-
-            email.Destinatario = "devbrofficial@gmail.com";
-            email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
-            email.Corpo = "A quantidade atual do ingrediente (Estoque.Ingrediente.Nome) está abaixo do minímo, que é de (Estoque.QuantidadeMinima).";
-
-            // Act
-            var resultado = email.CorpoValido();
-
-            // Assert
-            Assert.True(resultado); // O resultado esperado é que o corpo do email esteja preenchido (true).
-        }
-
-        [Fact]
-        public void Verifica_Se_Corpo_Esta_Em_Branco()
-        {
-            // Arrange
-            var email = new Email();
-
-            email.Destinatario = "devbrofficial@gmail.com";
-            email.Assunto = "Quantidade de Ingredientes abaixo do esperado.";
-            email.Corpo = "";
-
-            // Act
-            var resultado = email.CorpoValido();
-
-            // Assert
-            Assert.False(resultado); // O resultado esperado é que o corpo do email esteja em branco (false).
-
-            // Também funciona com Corpo sendo null.
+            Assert.False(resultado); // O resultado é que o corpo ou o assunto sejam inválidos (false).
         }
     }
 }

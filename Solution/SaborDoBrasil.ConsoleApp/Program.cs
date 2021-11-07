@@ -1,7 +1,6 @@
-﻿using SaborDoBrasil.Dominio.Modelo;
-
-
-using System;
+﻿using System;
+using SaborDoBrasil.Dominio.Modelo;
+using SaborDoBrasil.Repositorio;
 
 namespace SaborDoBrasil.ConsoleApp
 {

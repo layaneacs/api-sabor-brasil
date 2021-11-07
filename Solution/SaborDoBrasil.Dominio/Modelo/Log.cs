@@ -1,69 +1,59 @@
-﻿using System;
-using System.IO;
+﻿using SaborDoBrasil.Repositorio;
+using System;
 
 namespace SaborDoBrasil.Dominio.Modelo
 {
     public class Log
     {
-        /*
-         
-        Resumo de tudo até aqui:
+        private readonly LogRepositorio logRepositorio = new LogRepositorio();
 
-        - No método de cadastro, se (Quantidade Atuual > Quantidade Maxima), um novo objeto do tipo Log é criado.
-        - Quando o novo objeto é criado, automáticamente um arquivo com toda a descrição do log é criado.
-        - Assim, o log é criado!
-        - O nome do arquivo é em função da data em que se cria o log.
-        - Há um e somente um diretório em que vão todos os logs criados.
-        - Caso o diretório não exista, será criado.
+        public string Id { get; set; }
+        public DateTime Data { get; set; }
 
-        */
+        public string IngredienteNome { get; set; }
+        public double QuantidadeAtual { get; set; }
+        public double QuantidadeMaxima { get; set; }
+        public double Desperdicio { get; set; }
 
-        private string Relatorio { get; set; }
-
-        private static string diretorioLogs = @".\..\..\..\Logs\"; // Pasta onde ficarão armazenados todos os logs.
-
-        public Log(Estoque e)
+        public Log()
         {
-            Relatorio = DateTime.Now.ToString() + "\n";
-            Relatorio += $"Ingrediente = {e.Ingrediente.Nome}; Atual = {e.QuantidadeAtual}; Maximo = {e.QuantidadeMaxima}; Desperdicio = {e.QuantidadeAtual - e.QuantidadeMaxima} :: \n";
 
-            GerarLog();
         }
 
-        private static void CriarDiretorioLogs()
+        public Log GerarLog(Estoque estoque)
         {
-            if (!Directory.Exists(diretorioLogs))
-                Directory.CreateDirectory(diretorioLogs);
+            Id = Guid.NewGuid().ToString();
+            Data = DateTime.Today;
+
+            IngredienteNome = estoque.Ingrediente.Nome;
+            QuantidadeAtual = estoque.QuantidadeAtual;
+            QuantidadeMaxima = estoque.QuantidadeMaxima;
+
+            Desperdicio = QuantidadeAtual - QuantidadeMaxima;
+
+            logRepositorio.Cadastrar(this);
+            return this;
         }
 
-        private void GerarLog()
+        public bool LerLog(string id, Usuarios user)
         {
-            string logPath = diretorioLogs + $@"\{DateTime.Today.Day}-{DateTime.Today.Month}-{DateTime.Today.Year}-LOG.txt";
+            var result = logRepositorio.BuscarPorId(id);
 
-            CriarDiretorioLogs();
-
-            using (StreamWriter writer = new StreamWriter(logPath, true))
-                writer.WriteLine(Relatorio); // Tanto criação do Log quanto adição de novos relatórios.
-        }
-
-        public static void LerLog(DateTime date, Usuarios user)
-        {
-            if (user.Perfil == Perfil.GERENTE)
+            if (!(user.Perfil == Perfil.GERENTE))
             {
-                CriarDiretorioLogs();
-
-                string logPath = diretorioLogs + $@"\{date.Day}-{date.Month}-{date.Year}-LOG.txt";
-
-                if (!File.Exists(logPath))
-                    return; // Não mostra nada.
-
-                using (StreamReader reader = new StreamReader(logPath))
-                    Console.Write(reader.ReadToEnd()); // Dando output. Por enquanto, output no Console.
+                Console.WriteLine("Perfil não autorizado.");
+                return false;
             }
-            else
+            else if (result is null)
             {
-                // Permissão negada.
+                Console.WriteLine("Log não encontrado.");
+                return false;
             }
+
+            Console.WriteLine($"Data: {result.Data.Day}/{result.Data.Month}/{result.Data.Year}");
+            Console.WriteLine($"Ingrediente: {result.IngredienteNome}; Quantidade Atual: {result.QuantidadeAtual}; Quantidade Máxima: {result.QuantidadeMaxima}; Desperdício: {result.Desperdicio}");
+
+            return true;
         }
     }
 }

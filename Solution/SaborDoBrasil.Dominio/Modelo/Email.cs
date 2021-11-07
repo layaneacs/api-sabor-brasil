@@ -8,13 +8,38 @@ namespace SaborDoBrasil.Dominio.Modelo
         public string Assunto { get; set; }
         public string Corpo { get; set; }
 
+        public Email()
+        {
+
+        }
+
+        public void EnviarEmailAutomaticamente(Estoque e)
+        {
+            Destinatario = "devbrofficial@gmail.com";
+            Assunto = $"Quantidade de {e.Ingrediente.Nome} abaixo do esperado!";
+
+            Corpo = $"O ingrediente {e.Ingrediente} possui quantidade atual de {e.QuantidadeAtual}, o que" +
+                    $"é abaixo ou igual a quantidade miníma, de {e.QuantidadeMinima}.";
+
+            // Enviar Email
+        }
+
+        public void EnviarEmailPersonalizado(Estoque e, string assunto, string corpo)
+        {
+            if (!AssuntoOuCorpoValidos())
+            {
+                return;
+            }
+
+            Destinatario = "devbrofficial@gmail.com";
+            Assunto = assunto;
+            Corpo = corpo;
+            
+            // Enviar Email
+        }
+
         public bool DestinatarioValido()
         {
-            // Um email tem o seguinte formato: Nome@Dominio.algo
-            // Email não deve começar com nenhum símbolo.
-            // Deve terminar com letra (ex: .coM).
-            // Deve conter tanto '@' quanto '.'
-
             var primeiroDigito = this.Destinatario[0];
             var ultimoDigito = this.Destinatario[Destinatario.Length - 1];
 
@@ -26,6 +51,12 @@ namespace SaborDoBrasil.Dominio.Modelo
                 return true;
         }
 
+        public bool AssuntoOuCorpoValidos()
+        {
+            return !String.IsNullOrEmpty(this.Assunto) && !String.IsNullOrEmpty(this.Corpo);
+        }
+
+        /*
         public bool AssuntoValido()
         {
             return !String.IsNullOrEmpty(this.Assunto);
@@ -35,5 +66,6 @@ namespace SaborDoBrasil.Dominio.Modelo
         {
             return !String.IsNullOrEmpty(this.Corpo);
         }
+        */
     }
 }

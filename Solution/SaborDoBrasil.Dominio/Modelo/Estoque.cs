@@ -8,7 +8,6 @@
         public double QuantidadeMinima { get; set; }
         public UnidadeMedida UnidadeMedida { get; set; }
 
-
         public Estoque()
         {
 
@@ -24,9 +23,21 @@
             return QuantidadeAtual <= QuantidadeMinima;
         }
 
-        public Estoque InserirQuantidade(int quantidade)
+        public Estoque AlterarQuantidade(int quantidade)
         {
-            this.QuantidadeAtual += quantidade;
+            QuantidadeAtual += quantidade;
+
+            if (AtingiuQuantidadeMinima())
+            {
+                Email email = new Email();
+                email.EnviarEmailAutomaticamente(this);
+            }
+            else if (ExisteDespedicio())
+            {
+                Log log = new Log();
+                
+                log.GerarLog(this);
+            }
 
             return this;
         }
