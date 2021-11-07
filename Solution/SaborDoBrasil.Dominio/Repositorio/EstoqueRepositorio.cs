@@ -16,9 +16,9 @@ namespace SaborDoBrasil.Repositorio
         }
 
 
-        public Estoque Cadastrar(Estoque estoque, Perfil perfil)
+        public Estoque Cadastrar(Estoque estoque, Usuarios usuario)
         {
-            if (Perfil.ESTOQUISTA == perfil) //--validação aqui mesmo? Ou na entidade
+            if (Perfil.ESTOQUISTA == usuario.Perfil)
             {
                 db.Add(estoque);
                 return estoque;
