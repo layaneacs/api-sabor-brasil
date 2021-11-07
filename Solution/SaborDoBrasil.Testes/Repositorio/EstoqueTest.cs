@@ -26,12 +26,15 @@ namespace SaborDoBrasil.Testes.Repositorio
             estoque.QuantidadeMaxima = 10;
             estoque.QuantidadeMinima = 2;
             estoque.Ingrediente = ingrediente1;
+            Usuarios user = new Usuarios();
+            user.Perfil = Perfil.COZINHEIRO;
+
+            repositorio.Cadastrar(estoque, user);
+            var getEstoque = repositorio.BuscarPorId("2");
+            getEstoque.AlterarQuantidade(4);
 
 
             // Act
-            repositorio.Cadastrar(estoque, Perfil.ESTOQUISTA);
-            var getEstoque = repositorio.BuscarPorId("2");
-            getEstoque.AlterarQuantidade(4);
             repositorio.Update("2", getEstoque);
 
             // Assert 
@@ -57,9 +60,11 @@ namespace SaborDoBrasil.Testes.Repositorio
             estoque.QuantidadeMaxima = 10;
             estoque.QuantidadeMinima = 2;
             estoque.Ingrediente = ingrediente1;
+            Usuarios user = new Usuarios();
+            user.Perfil = Perfil.COZINHEIRO;
 
             // Act
-            var result = repositorio.Cadastrar(estoque, Perfil.COZINHEIRO);
+            var result = repositorio.Cadastrar(estoque, user);
 
             // Assert 
             Assert.Null(result);
