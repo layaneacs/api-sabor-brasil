@@ -48,6 +48,5 @@ namespace SaborDoBrasil.Repositorio
             db.Remove(result);
             return true;
         }
-
     }
 }
