@@ -5,7 +5,7 @@ using Xunit;
 namespace SaborDoBrasil.Testes
 {
     public class IngredienteEntidade
-    {
+    {        
         [Fact]
         public void Verifca_se_ingrediente_esta_valido()
         {
@@ -21,13 +21,11 @@ namespace SaborDoBrasil.Testes
 
             // Assert 
             Assert.True(result);
-
         }
 
         [Fact]
         public void Verifca_se_ingrediente_nao_esta_valido()
         {
-
             // Arrange
             var ingrediente = new Ingrediente
             {
@@ -40,8 +38,6 @@ namespace SaborDoBrasil.Testes
 
             // Assert 
             Assert.False(result);
-
         }
-
     }
 }
