@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using SaborDoBrasil.Repositorio;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SaborDoBrasil.Dominio.Modelo
 {
@@ -19,27 +21,31 @@ namespace SaborDoBrasil.Dominio.Modelo
 
         public void Preparar()
         {
+            EstoqueRepositorio estoqueRepositorio = new EstoqueRepositorio();
+
             List<Estoque> estoques = new List<Estoque>();
             int estoquesMenores = 0;
 
             foreach (KeyValuePair<Ingrediente, int> key in Receita.Ingredientes)
             {
-                // estoqueBaixo = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == key.Key);
+                Estoque estoqueBaixo = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == key.Key);
 
-                // if (estoqueBaixo is null) { return; // O ingrediente não está cadastrado, há algum problema! }
-                // else
-                // if (estoqueBaixo.QuantidadeAtual < key.Value)
-                // {
-                //      estoquesMenores++;
-                // }
+                if (estoqueBaixo is null) 
+                { 
+                    return; // O ingrediente não está cadastrado, há algum problema!
+                }
+                else if (estoqueBaixo.QuantidadeAtual < key.Value)
+                {
+                      estoquesMenores++;
+                }
             }
 
             if (estoquesMenores == 0) // Não existem estoques com quantidade insuficiente de ingredientes
             {
                 foreach(KeyValuePair<Ingrediente, int> key in Receita.Ingredientes)
                 {
-                    // Estoque estoque = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == key.Key);
-                    // estoque.AlterarValor(-key.Value);
+                    Estoque estoque = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == key.Key);
+                    estoque.AlterarQuantidade(-key.Value);
                 }
             }
         }
