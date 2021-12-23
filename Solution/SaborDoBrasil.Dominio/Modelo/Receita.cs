@@ -15,7 +15,9 @@ namespace SaborDoBrasil.Dominio.Modelo
         // public Ingrediente Ingrediente { get; set; }
         // public int QuantidadeUtilizada { get; set; }
 
-        public Dictionary<Ingrediente, int> Ingredientes { get; set; }
+        public List<Ingrediente> Ingredientes { get; set; }
+        public List<int> QuantidadesIngrediente { get; set; }
+
         public UnidadeMedida UnidadeMedida { get; set; }
         // public Prato Prato { get; set; }
 

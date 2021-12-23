@@ -14,38 +14,38 @@ namespace SaborDoBrasil.Dominio.Modelo
         public void Cadastrar()
         {
             // Cadastro no banco de dados:
-            
+
             // pratoRepositorio.Cadastrar(this); --> Adiciona diretamente a db. Verificação do perfil aqui ou lá?
             // this.Receita.Cadastrar(); --> Adiciona indiretamente a db.
         }
 
-        public void Preparar()
+        public bool EstaDisponivel()
         {
-            EstoqueRepositorio estoqueRepositorio = new EstoqueRepositorio();
+            EstoqueRepositorio estoqueRepositorio = new EstoqueRepositorio(); // Banco de dados dos Estoques (não ficará aqui)
 
-            List<Estoque> estoques = new List<Estoque>();
-            int estoquesMenores = 0;
-
-            foreach (KeyValuePair<Ingrediente, int> key in Receita.Ingredientes)
+            for (int i = 0; i < Receita.Ingredientes.Count; i++)
             {
-                Estoque estoqueBaixo = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == key.Key);
+                Estoque estoqueBaixo = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == Receita.Ingredientes[i]);
 
-                if (estoqueBaixo is null) 
-                { 
-                    return; // O ingrediente não está cadastrado, há algum problema!
-                }
-                else if (estoqueBaixo.QuantidadeAtual < key.Value)
+                if (estoqueBaixo is null || estoqueBaixo.QuantidadeAtual < Receita.QuantidadesIngrediente[i])
                 {
-                      estoquesMenores++;
+                    return false; // O ingrediente não está cadastrado ou existe falta de ingredientes, há algum problema!
                 }
             }
 
-            if (estoquesMenores == 0) // Não existem estoques com quantidade insuficiente de ingredientes
+            return true;
+        }
+
+        public void Preparar()
+        {
+            EstoqueRepositorio estoqueRepositorio = new EstoqueRepositorio(); // Banco de dados dos Estoques (não ficará aqui)
+
+            if (EstaDisponivel())
             {
-                foreach(KeyValuePair<Ingrediente, int> key in Receita.Ingredientes)
+                for (int i = 0; i < Receita.Ingredientes.Count; i++)
                 {
-                    Estoque estoque = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == key.Key);
-                    estoque.AlterarQuantidade(-key.Value);
+                    Estoque estoque = estoqueRepositorio.BuscarTodos().FirstOrDefault<Estoque>(x => x.Ingrediente == Receita.Ingredientes[i]);
+                    estoque.AlterarQuantidade(-Receita.QuantidadesIngrediente[i]);
                 }
             }
         }
