@@ -1,4 +1,6 @@
-﻿namespace SaborDoBrasil.Dominio.Modelo
+﻿using SaborDoBrasil.Repositorio;
+
+namespace SaborDoBrasil.Dominio.Modelo
 {
     public class Estoque: EntidadeBase
     {
@@ -27,6 +29,11 @@
         {
             QuantidadeAtual += quantidade;
 
+            if (QuantidadeAtual < 0)
+            {
+                QuantidadeAtual = 0;
+            }
+
             if (AtingiuQuantidadeMinima())
             {
                 Email email = new Email();
@@ -35,7 +42,6 @@
             else if (ExisteDespedicio())
             {
                 Log log = new Log();
-                
                 log.GerarLog(this);
             }
 
